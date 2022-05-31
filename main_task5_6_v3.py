@@ -1,9 +1,7 @@
 def greet():
     print("-------------------")
     print("  Hello Players!  ")
-    print("  Here Simple IIC TOC Game  "
-          ""
-          "!  ")
+    print("  Here Simple TIC TAC TOE Game!  ")
     print("-------------------")
     print(" You should insert: coordinates x y ")
     print(" Where 'x' - row num  ")
