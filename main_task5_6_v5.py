@@ -1,54 +1,66 @@
 def greet():
-    print("-------------------")
+    print("-" * 17)
     print("  Hello Players!  ")
     print("  Here Simple TIC TAC TOE Game!  ")
-    print("-------------------")
-    print(" You should insert: coordinates x y ")
+    print("-" * 17)
+    print(" You should insert: coordinates x 'space' y ")
     print(" Where 'x' - row num  ")
     print(" Where 'y' - col num ")
 
-def show():
+
+field = [["-"] * 3 for i in range(3)]
+
+def show_field():
     print()
-    print("    | 0 | 1 | 2 | ")
-    print("  --------------- ")
+    print("    | 0 | 1 | 2 |")
+    print("-" * 17)
     for i, row in enumerate(field):
         row_str = f"  {i} | {' | '.join(row)} | "
         print(row_str)
-        print("  --------------- ")
+        print("-" * 17)
     print()
 
-def ask():
-    while True:
-        cords = input("Please, go type: ").split()
 
-        if len(cords) != 2:
-            print(" Please, type 2 coordinates! ")
+def req():
+    while True:
+        coord = input("          Please, go ahead!: ").split()
+        if len(coord) != 2:
+            print(" Please, type correct pair of coordinates!")
             continue
 
-        x, y = cords
+        x, y = coord
 
         if not (x.isdigit()) or not (y.isdigit()):
-            print(" You should insert digits! ")
+            print(" Please, input  a pair digits")
             continue
 
         x, y = int(x), int(y)
 
         if 0 > x or x > 2 or 0 > y or y > 2:
-            print(" Your coordinates is out of range ! ")
+            print(" Coordinate(s) is out of range!")
             continue
 
-        if field[x][y] != " ":
-            print(" oops! The sell already occupied! ")
+        if field[x][y] != "-":
+            print(" This cell is already occupied!")
             continue
 
         return x, y
-def check_win():
-    win_coord = (((0, 0), (0, 1), (0, 2)), ((1, 0), (1, 1), (1, 2)), ((2, 0), (2, 1), (2, 2)),
-                ((0, 2), (1, 1), (2, 0)), ((0, 0), (1, 1), (2, 2)), ((0, 0), (1, 0), (2, 0)),
-                ((0, 1), (1, 1), (2, 1)), ((0, 2), (1, 2), (2, 2)))
-    for cord in win_coord:
+
+
+
+
+def win_seq():
+    win_coord = (((0, 0), (0, 1), (0, 2)),
+                 ((1, 0), (1, 1), (1, 2)),
+                 ((2, 0), (2, 1), (2, 2)),
+                 ((0, 0), (1, 0), (2, 0)),
+                 ((1, 0), (1, 1), (2, 1)),
+                 ((2, 0), (2, 1), (2, 2)),
+                 ((0, 0), (1, 1), (2, 2)),
+                 ((2, 0), (1, 1), (0, 2)))
+    for coord in win_coord:
         symbols = []
-        for c in cord:
+        for c in coord:
             symbols.append(field[c[0]][c[1]])
         if symbols == ["X", "X", "X"]:
             print("The 'X' is Winner!")
@@ -60,27 +72,26 @@ def check_win():
 
 
 greet()
-field = [[" "] * 3 for i in range(3)]
+field = [["-"] * 3 for i in range(3)]
 count = 0
 while True:
     count += 1
-    show()
+    show_field()
     if count % 2 == 1:
         print("Now The X's turn to go")
     else:
         print("Now The 0's turn to go")
 
-    x, y = ask()
+    x, y = req()
 
     if count % 2 == 1:
         field[x][y] = "X"
     else:
         field[x][y] = "0"
 
-    if check_win():
+    if win_seq():
         break
 
     if count == 9:
         print(" That's a Draw!")
         break
-
