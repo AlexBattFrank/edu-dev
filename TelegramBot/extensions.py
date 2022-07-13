@@ -23,7 +23,7 @@ class CryptoConverter:
             raise ConvertionException(f'Failed to receive exchange currency {base}')
 
         try:
-            amount = float(amount)
+            amount = float(amount.replace(",", "."))
         except ValueError:
             raise ConvertionException(f'Failed to receive currency amount {amount}')
 
