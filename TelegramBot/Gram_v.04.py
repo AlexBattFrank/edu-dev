@@ -28,7 +28,7 @@ def convert(message: telebot.types.Message):
         values = message.text.split()
 
         if len(values) != 3:
-            raise ConvertionException('Sorry, you are insert wrong parameters!')
+            raise ConvertionException('Sorry, you are insert incorrect parameters!')
 
         quote, base, amount = values
         total_base = CryptoConverter.convert(quote, base, amount)
