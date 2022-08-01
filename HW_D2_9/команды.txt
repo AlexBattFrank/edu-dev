@@ -1,0 +1,82 @@
+1.  Создать пользователей: 
+
+	u1 = User.objects.create_user(username = 'Mal')
+	u2 = User.objects.create_user(username = 'Maks')
+	u3 = User.objects.create_user(username = 'Pam')
+
+
+2.  Связать 2 объекта модели Аuthor, связанные с пользователями,
+	
+	author1 = Author.objects.create(authorUser=u1)
+	author2 = Author.objects.create(authorUser=u3)
+
+3.  Создать 4 категории в моделе Category,
+
+	Category.objects.create(name='AR')
+	Category.objects.create(name='IT')
+	Category.objects.create(name='REG')
+	Category.objects.create(name='POL')
+
+4.  Создать 2 статьи и 1 Новость,
+	Post.objects.create(author=author2, categoryType = 'AR', title = " ", body = " ")
+	Post.objects.create(author=author2, categoryType = 'AR', title = " ", body = " ")
+	Post.objects.create(author=author1, categoryType = 'NW', title = " ", body = " ")
+
+
+5.  В 1 статье должно быть не меньше 2х категорий,
+
+	Post.objects.get(id=2).categoryType
+	Post.objects.get(id=1).postCategory.add(Category.objects.get(id=3))
+	Post.objects.create(author=author1, categoryType = 'NW, AR',  title = "...", body = "....")
+
+
+6.  Создать 4 комментария к разным объектом модели Post (минимум 1 коммент в каждом объекте),
+	
+	Comment.objects.create(commentPost=Post.objects.get(id=5), commentUser=Author.objects.get(id=2).authorUser, text="...")
+
+	
+7.  Статьи, новости, комментарии должны иметь like()/dislike,
+	
+	Comment.objects.get(id=3).dislike()
+	Comment.objects.get(id=4).like()
+	Post.objects.get(id=2).like()
+	Post.objects.get(id=5).dislike()
+
+
+8.  Обновить рейтинги пользователей,
+
+	a = Author.objects.get(id=2)
+	a.update_rating()
+	a.ratingAuthor
+
+
+9.  Вывести username и рейтинг лучшего пользователя (применяя сортировку и возвращая поля лучшего объекта),
+	
+	a = Author.objects.order_by('-ratingAuthor')[:1] 
+	a
+	
+	for i in a:
+	    i.ratingAuthor
+            i.authorUser.username
+
+10. Вывести username автора, рейтинг, заголовок, превью лучшей статьи и дату добавления, основываясь
+    на лайках/дизлайках к этой статье
+
+	# Лучшая статья (bp)
+	bp = Post.objects.all().order_by('-rating').values('id', 'author', 'rating', 'title', 'body', 'dateCreation')[0]
+	bp
+
+
+11. Вывести все комментарии (дата, пользователь, рейтинг, текст) к этой статье
+	
+	# Комментарии к лучшей статье(bp_comm)
+
+	bp = Post.objects.all().order_by('-rating').values('id', 'author', 'rating', 'title', 'body', 'dateCreation')[0]
+	bp_i = Post.objects.get(rating=bp['rating'])
+	bp_i
+	
+	bp_comm = bp_i.comment_set.all()
+	bp_comm	
+	
+
+
