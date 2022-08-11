@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+{% endblock title %}
+{% block content %}
+<h1> All that news</h1>
+<hr>
+    {% if news %}
+        <table>
+            <tr>
+                <td> Article name</td>
+                <td>Date of publication</td>
+                <td>Descriptions</td>
+                <td>Category</td>
+            </tr>
+
+            {% for news in news %}
+            <tr>
+                <td>{{ news.name}}</td>
+                <td>{{ time_now|date:'d M Y'</td>
+                <td>{{ news.description|truncatechars: 16 }}</td>
+                <td>{{ news category.name }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    {% endif %}
+
+</body>
+</html>
