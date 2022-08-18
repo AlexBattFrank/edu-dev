@@ -1,0 +1,18 @@
+{% extends 'default.html' %}
+{% load custom_filters %}
+
+
+{% block title %}
+<h2>ARTICLES</h2>
+{% endblock title %}
+
+{% block content %}
+
+{% for posts in post_list %}
+<q><strong>AUTHOR: </strong>{{ posts.author }} / {{ posts.dateCreation|date:'d M Y, H:m' }} </q>
+<p><a href="{{ posts.get_absolute_url }}">{{ posts.title|truncatechars:35|censor }}</a></p>
+<p>{{ posts.preview|truncatechars:40|censor }}</p>
+{% endfor %}
+
+
+{% endblock %}
