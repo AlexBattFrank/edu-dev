@@ -1,0 +1,11 @@
+{% extends default.html %}
+
+{% block content %}
+<h3> NEW POST </h3>
+<hr>
+<form action="" method="post">
+    {% csrf token %}
+    {% form.as_p %}
+    <input type="submit" value="Save">
+</form>
+{% endblock content %}
