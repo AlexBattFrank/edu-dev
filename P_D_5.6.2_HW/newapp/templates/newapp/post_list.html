@@ -1,0 +1,54 @@
+{% extends 'default.html' %}
+{% load custom_filters %}
+
+{% block title %} ARTICLES {% endblock %}
+
+
+{% block content %}
+
+<div>
+    <h1>All Publications</h1>
+    <h4>{{ time_now|date:'d M Y' }}</h4>
+    <p class="lead">Posts per page: {{ post_list|length }}</p>
+</div>
+<hr>
+<div>
+    {% for posts in post_list %}
+    <q><strong>AUTHOR: </strong>{{ posts.author }} / {{ posts.dateCreation|date:'d M Y, H:m' }} </q>
+    <p><a href="{{ posts.get_absolute_url }}">{{ posts.title|truncatechars:30|censor }}</a></p>
+    <p>{{ posts.preview|truncatechars:40|censor }}</p>
+    {% endfor %}
+</div>
+
+<div> <a class="btn btn-info" href="{% url 'post_create_view' %}">Add a Post</a> </div>
+<hr>
+<div>
+    <!-- Проверяем поддержку постраничного вывода -->
+    {% if is_paginated %}
+
+    <!-- Если доступна предыдущая страница, то даём ссылку на неё и самую первую страницу -->
+    {% if page_obj.has_previous %}
+    <a href="?page=1">First</a>
+    <a href="?page={{ page_obj.previous_page_number }}"><<</a>
+    {% endif %}
+
+    <!-- Показываем только текущую страницу и ближайшие к ней, чтобы не удлинять список  -->
+    {% for num in page_obj.paginator.page_range %}
+    {% if page_obj.number == num %}
+    <a>{{ num }}</a>
+    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+    <a href="?page={{ num }}">{{ num }}</a>
+    {% endif %}
+    {% endfor %}
+
+    <!-- Если есть следующая страница, даём ссылку на неё и на последнюю страницу -->
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">>></a>
+    <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+    {% endif %}
+    <p>Total Shown Posts {{ page_obj.start_index }}—{{ page_obj.end_index }}</p>
+
+</div>
+{% endif %}
+
+{% endblock %}
