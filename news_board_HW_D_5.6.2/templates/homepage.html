@@ -1,0 +1,43 @@
+{% extends 'default.html' %}
+
+{% block title %}
+News Portal
+{% endblock title %}
+
+{% block content %}
+    <br>
+    <h4><span style="color: #0000ff;">{{ time_now|date:'d M Y' }}</span></h4>
+    <hr size="2">
+    <h2>Welcome to TELCO's<br>News/Articles Portal</h2>
+    <hr size="2">
+    {% if not is_author %}
+<!--    <button><a class="nav-link" href="{% url 'account_upgrade' %}">-->
+<!--        <h4><strong>Join Us! Be the authors!</strong></h4>-->
+<!--    </a></button>-->
+<!--    <hr size="1">-->
+    {% endif %}
+    <div>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <h3><a class="nav-link" href="{% url 'post_list' %}"> All News/Articles </a></h3>
+            </li>
+            <li class="nav-item">
+                <h3><a class="nav-link" href="{% url 'post_search' %}"> Search Exits Posts </a></h3>
+            </li>
+            <li class="nav-item">
+                <h3><a class="nav-link" href="{% url 'post_create' %}"> Create a New Post </a></h3>
+            </li>
+            <li class="nav-item">
+                <h3><a class="nav-link" href="{% url 'author_posts' %}"> Update an Old Post </a></h3>
+            </li>
+        </ul>
+    </div>
+    <br>
+    <br>
+    <h4>You want to be an Author? Click the exec button below!</h4>
+    <br>
+    <button><a class="nav-link" href="{% url 'account_upgrade' %}">
+        <h4><strong>Press Here!<br>Be the author!</strong></h4>
+    </a></button>
+
+{% endblock content %}
