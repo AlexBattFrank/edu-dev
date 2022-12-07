@@ -1,0 +1,72 @@
+{% load static %}
+
+
+<html>
+<head>
+	<title>{{title}}</title>
+	<link type="text/css" href="{% static 'msitex/css/styles.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="shortcut icon" href="{% static 'msitex/images/logo.ico' %}" type="image/x-icon"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<table class="table-page" border=0 cellpadding="0" cellspacing="0">
+<tr><td valign=top>
+{% block mainmenu %}
+		<div class="header">
+			<ul id="mainmenu" class="mainmenu">
+			<li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="/myhobby"> About My Hobby </a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="/about"> About Me </a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="{% url 'feedback' %}"> Contact me </a>
+            </li>
+
+
+			</ul>
+			<div class="clear"></div>
+		</div>
+{% endblock mainmenu %}
+
+
+<table class="table-content" border=0 cellpadding="0" cellspacing="0">
+<tr>
+<!-- Sidebar слева -->
+	<td valign="top" class="left-chapters">
+	<ul id="leftchapters">
+		<li><a href="{% url 'home' %}">Home</a></li>
+		<li class="nav-item">
+		<li><a href="{% url 'about' %}">About me</a></li>
+		<li><a href="{% url 'myhobby' %}">About My Hobby</a></li>
+		<li><a href="{% url 'feedback' %}">Contact Me</a></li>
+
+	</ul>
+</td>
+<!-- Конец Sidebar'а -->
+<td valign="top" class="content">
+	<!-- Хлебные крошки -->
+	{% block breadcrumbs %}
+	{% endblock %}
+
+<!-- Блок контента -->
+	<div class="content-text">
+{% block content %}
+{% endblock %}
+	</div>
+<!-- Конец блока контента -->
+
+</td></tr></table>
+</td></tr>
+<!-- Footer -->
+<tr><td valign=top>
+	<div id="footer"></div>
+</td></tr></table>
+<!-- Конец footer'а и страницы -->
+</body>
+</html>
