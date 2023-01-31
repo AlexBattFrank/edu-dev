@@ -63,10 +63,8 @@ myTableLamp.lit();
 myComputer.plugIn();
 myComputer.start();
 
-
 console.log(`My table lamp is consuming ${myTableLamp.wattage} Watts`);
 console.log(`My computer is consuming ${myComputer.wattage} Watts`);
-
 
 myComputer.unplug();
 myTableLamp.unplug();
