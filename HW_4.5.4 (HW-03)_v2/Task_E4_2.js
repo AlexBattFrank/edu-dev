@@ -2,7 +2,7 @@ const someObj = {
     first: 1,
     second: 'bar'
 };
-const d = 'first'
+const d = 'third'
 const b = 'ban'
 
 function checkProperty(string, someObj){
