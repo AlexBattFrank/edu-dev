@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+  <nav>
+    <ul>
+<!--      <li><a href="{% url 'chat:room_list' %}">Chat</a></li>-->
+<!--      {% if user.is_authenticated %}-->
+<!--        <li><a href="{% url 'profile:edit' %}">Profile</a></li>-->
+<!--        <li><a href="{% url 'auth:logout' %}">Logout</a></li>-->
+<!--      {% else %}-->
+<!--        <li><a href="{% url 'auth:login' %}">Login</a></li>-->
+<!--        <li><a href="{% url 'auth:register' %}">Register</a></li>-->
+            <li><a href="{% url 'chat:room_list' %}">Chat</a></li>
+      <li><a href="{% url 'user_list' %}">User list</a></li>
+      <li><a href="{% url 'room_list' %}">Room list</a></li>
+      <li><a href="{% url 'message_list' %}">Message list</a></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'profile:edit' %}">Profile</a></li>
+        <li><a href="{% url 'auth:logout' %}">Logout</a></li>
+      {% else %}
+        <li><a href="{% url 'auth:login' %}">Login</a></li>
+        <li><a href="{% url 'auth:register' %}">Register</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% block content %}
+  {% endblock %}
+</body>
+</html>
