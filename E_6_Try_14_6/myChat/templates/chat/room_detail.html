@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ room.name }}</h1>
+
+  <ul>
+    {% for message in messages %}
+      <li>{{ message.content }}</li>
+    {% empty %}
+      <li>No messages in this chat room yet.</li>
+    {% endfor %}
+  </ul>
+
+  <form method="POST" action="{% url 'message_create' room.id %}">
+    {% csrf_token %}
+    <label for="content">New message:</label>
+    <input type="text" id="content" name="content" required>
+    <button type="submit">Send</button>
+  </form>
+{% endblock %}

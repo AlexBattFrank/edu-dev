@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Profile</h1>
+  <p>Username: {{ user_profile.user.username }}</p>
+  <p>Email: {{ user_profile.user.email }}</p>
+  <p>First name: {{ user_profile.first_name }}</p>
+  <p>Last name: {{ user_profile.last_name }}</p>
+  <p>Location: {{ user_profile.location }}</p>
+  <p>Birth date: {{ user_profile.birth_date }}</p>
+  <a href="{% url 'edit_profile' %}">Edit Profile</a>
+{% endblock %}

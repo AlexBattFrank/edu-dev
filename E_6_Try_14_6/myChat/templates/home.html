@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Welcome to our chat app!</h1>
+  <p>Please <a href="{% url 'register' %}">register</a> or <a href="{% url 'login' %}">log in</a> to continue.</p>
+  {% if user.is_authenticated %}
+    <p>Logged in as {{ user.username }}. <a href="{% url 'edit_profile' %}">Edit profile</a>.</p>
+  {% endif %}
+{% endblock %}
+
