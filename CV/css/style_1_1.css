@@ -109,10 +109,10 @@ section li h3 {
 
 /* Стили для блока проектов */
 .projects {
-    width: 206%;
-    float: left;
-    box-sizing: border-box;
-    padding: 10px 20px;
+    width: 206%; /* устанавливаем ширину 100% для блока "Реализация проектов" */
+    float: left; /* выравниваем блок по левому краю */
+    box-sizing: border-box; /* учитываем padding и border в расчетах ширины блока */
+    padding: 10px 20px; /* устанавливаем padding для блока "Реализация проектов" */
 }
 
 .projects li {
@@ -132,7 +132,7 @@ section li h3 {
     background-color: #f2f2f2;
     color: #000000;
     cursor: pointer;
-    padding: 18px;
+
     width: 100%;
     border: none;
     text-align: left;
@@ -140,12 +140,13 @@ section li h3 {
     font-size: 16px;
     box-sizing: border-box;
 }
+
 .active, .collapsible:hover {
-    background-color: white;
+    background-color: #d3d3d3;
 }
 
 .collapsible:after {
-    content: '\002B';
+    content: '\02795';
     color: #0077c0;
     font-size: 13px;;
     float: right;
@@ -155,6 +156,13 @@ section li h3 {
 
 .active:after {
     content: "\2212";
+}
+
+.collapsible-content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #fff;
 }
 
 /* Стили для Timeline */
