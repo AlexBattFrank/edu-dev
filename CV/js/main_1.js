@@ -2,7 +2,7 @@
 const collapsibleTitles = document.querySelectorAll('.collapsible');
 collapsibleTitles.forEach(collapsibleTitle => {
     const id = collapsibleTitle.getAttribute('data-collapsible-title');
-    const collapsibleContent = document.querySelector(`[collapsible-content="${id}"]`);
+    const collapsibleContent = document.querySelector(`[data-collapsible-content="${id}"]`);
     collapsibleTitle.addEventListener('click', function () {
         if (collapsibleContent.style.maxHeight) {
             collapsibleContent.style.maxHeight = null;
