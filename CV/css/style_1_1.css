@@ -1,7 +1,16 @@
 /* Общие стили */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif; /* вот, использования внешнего шрифта от Гугла */
     margin: 0;
+}
+
+/* @-правила */
+@media (max-width: 768px) {
+    .header-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 a {
