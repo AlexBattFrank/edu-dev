@@ -1,0 +1,16 @@
+{
+  "posts": [
+    { "id": 1, "title": "Hello, dude" },
+    { "id": 1, "title": "Goodbye, mate" },
+
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "someone angry dude" }
+  ],
+  "comments": [
+    { "id": 1, "body": "derogatory comment from mate", "postId": 1 }
+  ],
+  "profile": { "name": "angry man" }
+}
+  ]
+}
