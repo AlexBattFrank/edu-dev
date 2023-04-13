@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.App {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.city-input,
+.time-interval {
+  margin: 1rem 0;
+}
+
+.weather-info {
+  margin-top: 1.5rem;
+  background-color: #f7f7f7;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: 1px solid transparent;
+  margin-right: 0.5rem;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+}
