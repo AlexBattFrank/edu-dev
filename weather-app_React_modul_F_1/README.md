@@ -40,3 +40,5 @@ npm install react-select
 npm start
 
 The app should now be running on [http://localhost:3000](http://localhost:3000).
+
+API key placed in WeatherService.js file
