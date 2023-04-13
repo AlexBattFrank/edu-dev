@@ -5,7 +5,7 @@ The weather app using React and OpenWeatherMap API.
 
 ## Features
 
-- Searching for a city(London, Dublin, Paris, Moscow)
+- Searching for a city(London, Dublin, Paris, Moscow, etc.)
 - Display current weather and forecast
 
 ## Installation
